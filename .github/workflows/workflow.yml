@@ -1,4 +1,4 @@
-# Workflow for OWASP Baseline Scan - Test2
+# Workflow for OWASP Baseline Scan
 
 name: SEC488 DAST
 
@@ -16,8 +16,6 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -26,7 +24,7 @@ jobs:
 
     # Runs the code in an Apache/PHP web server container
     - name: Startup web server
-      run: docker run -v $(pwd):/var/www/html -dit --rm --name php php:apache 
+      run: docker run -v $(pwd):/var/www/html -dit --rm --name php ryananicholson/secure-web 
 
     # Run OWASP Scan and create Issue of results
     - name: OWASP ZAP Baseline Scan
